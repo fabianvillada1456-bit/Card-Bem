@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="styles.css">
 <title>Card</title>
@@ -13,28 +12,59 @@
 
     <!-- 1. IMAGEN: cambia el src y el alt -->
     <div class="card__image-wrap">
-      <img src="assets/img/descarga.jpg" alt=""class="card_image">
-
+      <img src="assets/img/descarga (1).jpg" alt="" class="card__image">
     </div>
 
     <div class="card__body">
 
       <!-- 2. TÍTULO -->
-      <h1 class="card__title">Título aquí</h1>
+      <h1 class="card__title">Colombia mundialista</h1>
 
       <!-- 3. DESCRIPCIÓN -->
       <p class="card__description">
-        Escribe aquí la descripción breve de lo que estás mostrando.
+        Escribe aquí la descripción.
       </p>
 
       <!-- 4. BOTONES -->
       <div class="card__actions">
-        <button class="btn btn--primary">Botón 1</button>
-        <button class="btn btn--secondary">Botón 2</button>
+        <button class="btn btn--primary" id="btnUno">Botón 1</button>
+        <button class="btn btn--secondary" id="btnDos">Botón 2</button>
       </div>
 
     </div>
   </div>
+
+  <!-- Overlay que cubre toda la pantalla al hacer clic en el botón 1 -->
+  <div class="overlay" id="overlay">
+    <img class="overlay__image" src="assets/img/descarga (3).jpg" alt="Imagen ampliada">
+  </div>
+
+  <!-- Mensaje centrado que aparece al hacer clic en el botón 2 -->
+  <div class="patria-msg" id="patriaMsg">
+    No apoyas a tu patria 
+  </div>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+
+    document.getElementById('btnUno').addEventListener('click', function () {
+      overlay.classList.add('is-visible');
+    });
+
+    overlay.addEventListener('click', function () {
+      overlay.classList.remove('is-visible');
+    });
+
+    const patriaMsg = document.getElementById('patriaMsg');
+
+    document.getElementById('btnDos').addEventListener('click', function () {
+      patriaMsg.classList.add('is-visible');
+    });
+
+    patriaMsg.addEventListener('click', function () {
+      patriaMsg.classList.remove('is-visible');
+    });
+  </script>
 
 </body>
 </html>

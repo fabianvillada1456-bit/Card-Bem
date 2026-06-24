@@ -1,85 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  /* Colores de la bandera de Colombia */
+  --amarillo:#FCD116;
+  --azul:#003893;
+  --rojo:#CE1126;
+
+  /* Neutros para que la paleta no sea solo bandera, sino legible */
+  --fondo:#0E1116;
+  --surface:#15181D;
+  --surface-2:#1B1F26;
+  --texto:#F5F1E6;
+  --texto-dim:#B8B2A2;
+  --line:#2A2E36;
+}
+
+*{
+  box-sizing:border-box;
+}
+
 body{
-    font-family: 'Segoe UI', tahoma, geneva, verdana, sans-serif;
-
-    background-image: url(captu.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    background-attachment: fixed;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  background-image:
+    linear-gradient(165deg, rgba(14,17,22,0.85) 0%, rgba(14,17,22,0.7) 100%),
+    url('assets/img/descarga (2).jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  font-family:'Inter', sans-serif;
+  padding:40px 20px 40px 80px;
 }
 
-.card {
-    width: 350px;
-    background-color: rgb(125, 196, 196);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
+/* ===== Card ===== */
+.card{
+  width:480px;
+  background:linear-gradient(165deg, var(--surface) 0%, var(--surface-2) 100%);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.03) inset,
+    0 30px 60px -20px rgba(0,0,0,0.6);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
-.card:hover {
-    transform: translateY(-10px);
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.04) inset,
+    0 40px 80px -20px rgba(0,0,0,0.7),
+    0 0 0 1px rgba(252,209,22,0.25);
 }
 
-.card_image {
-    width: 100%;
-    height: auto;
-    display: block;
+/* Franja superior estilo bandera: amarillo (mitad), azul y rojo (cuartos) */
+.card::before{
+  content:"";
+  display:block;
+  width:100%;
+  height:6px;
+  background:linear-gradient(
+    to right,
+    var(--amarillo) 0% 50%,
+    var(--azul) 50% 75%,
+    var(--rojo) 75% 100%
+  );
 }
 
-.card_content {
-    padding: 15px;
+/* ===== Imagen ===== */
+.card__image-wrap{
+  width:100%;
+  height:300px;
+  overflow:hidden;
+  background:var(--surface-2);
 }
 
-.card_title {
-    margin: 0 0 10px 0;
-    font-size: 1.5em;
-    color: #333;
+.card__image-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .4s ease;
 }
 
-.card_description {
-    font-size: 1em;
-    color: #666;
-    line-height: 1.4;
-    margin: 0 0 15px 0;
+.card:hover .card__image-wrap img{
+  transform:scale(1.05);
 }
 
-.card_actions {
-    padding: 0 20px 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+/* ===== Contenido ===== */
+.card__body{
+  padding:24px 22px 26px;
 }
 
-.card_button {
-    flex-grow: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
+.card__title{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  font-size:22px;
+  color:var(--texto);
+  margin:0 0 10px;
+  letter-spacing:-0.01em;
 }
 
-.card_button--primary {
-    background-color: #007bff;
-    color: white;
-}
-.card_button--primary:hover {
-    background-color: #0056b3;
+/* pequeño acento rojo antes del título, como una "marca de país" */
+.card__title::before{
+  content:"";
+  display:inline-block;
+  width:10px;
+  height:10px;
+  background:var(--rojo);
+  border-radius:50%;
+  margin-right:8px;
+  vertical-align:middle;
 }
 
-.card_button--secondary {
-    background-color: #f50c0c;
-    color: white;
+.card__description{
+  font-size:13.5px;
+  line-height:1.6;
+  color:var(--texto-dim);
+  margin:0 0 22px;
 }
-.card_button--secondary:hover {
-    background-color: #ca5757;
+
+/* ===== Botones ===== */
+.card__actions{
+  display:flex;
+  gap:10px;
+}
+
+.btn{
+  flex:1;
+  padding:11px 16px;
+  border-radius:10px;
+  font-family:'Inter', sans-serif;
+  font-size:13.5px;
+  font-weight:600;
+  cursor:pointer;
+  border:1px solid transparent;
+  transition:all .2s ease;
+}
+
+/* Primario: amarillo bandera con texto azul oscuro (alto contraste) */
+.btn--primary{
+  background:var(--amarillo);
+  color:var(--azul);
+}
+
+.btn--primary:hover{
+  background:#ffe157;
+  transform:translateY(-2px);
+}
+
+/* Secundario: contorno rojo bandera */
+.btn--secondary{
+  background:transparent;
+  color:var(--texto);
+  border-color:var(--line);
+}
+
+.btn--secondary:hover{
+  border-color:var(--rojo);
+  color:var(--rojo);
+  background:rgba(206,17,38,0.08);
+  transform:translateY(-2px);
+}
+
+/* ===== Overlay de pantalla completa (aparece al hacer clic en Botón 1) ===== */
+.overlay{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  background:rgba(0,0,0,0.75);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s ease;
+  z-index:100;
+  padding-right:80px;
+}
+
+.overlay.is-visible{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.overlay__image{
+  width:400px;   /* mismo ancho que .card */
+  height:500px;  /* ajusta a tu gusto */
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.03) inset,
+    0 30px 60px -20px rgba(0,0,0,0.6);
+}
+
+/* ===== Mensaje de pantalla completa (Botón 2) ===== */
+.patria-msg{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:var(--rojo);
+  color:var(--texto);
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  font-size:clamp(32px, 6vw, 72px);
+  line-height:1.2;
+  padding:40px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s ease;
+  z-index:200;
+}
+
+.patria-msg.is-visible{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* ===== Accesibilidad ===== */
+@media (prefers-reduced-motion: reduce){
+  .card,
+  .card__image-wrap img,
+  .btn,
+  .overlay,
+  .patria-msg{
+    transition:none;
+  }
 }
