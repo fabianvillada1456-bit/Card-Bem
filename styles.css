@@ -1,0 +1,85 @@
+body{
+    font-family: 'Segoe UI', tahoma, geneva, verdana, sans-serif;
+
+    background-image: url(captu.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.card {
+    width: 350px;
+    background-color: rgb(125, 196, 196);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card_image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card_content {
+    padding: 15px;
+}
+
+.card_title {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.card_description {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.4;
+    margin: 0 0 15px 0;
+}
+
+.card_actions {
+    padding: 0 20px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card_button {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.card_button--primary {
+    background-color: #007bff;
+    color: white;
+}
+.card_button--primary:hover {
+    background-color: #0056b3;
+}
+
+.card_button--secondary {
+    background-color: #f50c0c;
+    color: white;
+}
+.card_button--secondary:hover {
+    background-color: #ca5757;
+}
